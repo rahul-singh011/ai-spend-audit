@@ -13,3 +13,11 @@
 **What I learned:** How to write Jest tests, how to think about audit logic defensibly, difference between a bug in code vs a bug in the test  
 **Blockers / what I'm stuck on:** Need to set up Supabase next  
 **Plan for tomorrow:** API route, Supabase setup, results page
+
+## Day 3 — 2026-05-09
+
+**Hours worked:** 4  
+**What I did:** Set up Supabase database with audits and leads tables, configured row-level security policies, created Supabase client helper, built POST /api/audit route, connected form to API, debugged multiple Supabase errors (typo in column name, RLS policy conflicts, null constraint issue). API now saves audits successfully and redirects to /audit/[id].  
+**What I learned:** How Next.js API routes work, how Supabase RLS policies work, how to debug database errors by reading error codes, difference between database schema errors and code errors  
+**Blockers / what I'm stuck on:** Results page not built yet — getting 404 on /audit/[id]  
+**Plan for tomorrow:** Build results page, add Anthropic AI summary, start lead capture modal

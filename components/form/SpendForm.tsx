@@ -93,8 +93,30 @@ export default function SpendForm() {
       return
     }
     setIsLoading(true)
-    console.log('Form data:', formData)
-    setIsLoading(false)
+    
+    try{
+      const response =await fetch('/api/audit', {
+        method : 'POST',
+        headers : { 'Content-Type': 'application/json' },
+        body : JSON.stringify(formData)
+      })
+
+      const result = await response.json()
+
+      if(!response.ok){
+        throw new Error(result.error || 'Something went wrong')
+      }
+
+      window.location.href = `/audit/${result.id}`
+
+    }catch(err){
+      console.error((err))
+      alert("Something went wrong, Try again.")
+    
+    }finally{
+      setIsLoading(false)
+    }
+
   }
 
   return (
