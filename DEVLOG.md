@@ -22,3 +22,10 @@
 **Blockers / what I'm stuck on:** Results page not built yet — getting 404 on /audit/[id]  
 **Plan for tomorrow:** Build results page, add Anthropic AI summary, start lead capture modal
 
+## Day 4 — 2026-05-10
+
+**Hours worked:** 4  
+**What I did:** Built results page with per-tool breakdown and savings hero. Integrated AI summary — first tried Anthropic API (no credits), switched to Groq free tier. Hit deprecated model error (llama3-8b-8192), fixed by switching to llama-3.3-70b-versatile. AI summary now generates personalized paragraphs with fallback template if API fails.  
+**What I learned:** How to handle API failures gracefully with fallback, how to debug model deprecation errors, how Next.js 16 changed params to a Promise
+**Blockers / what I'm stuck on:** Need to add lead capture and email sending next 
+**Plan for tomorrow:** Lead capture modal, Resend email, shareable URL OG tags, CI workflow, deploy to Vercel
