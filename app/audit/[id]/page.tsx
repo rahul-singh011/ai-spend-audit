@@ -5,6 +5,7 @@ import { supabase } from "@/lib/supabase";
 import { AuditResult, ToolRecommendation } from "@/types";
 
 import { use } from 'react'
+import { POST } from "@/app/api/audit/route";
 
 interface PageProps {
   params: Promise<{ id: string }>
@@ -33,8 +34,6 @@ export default function AuditPage({ params }: PageProps) {
         return;
       }
 
-      console.log('audit data from supabase:', data)
-
       setAudit({
         id: data.id,
         formData: data.form_data,
@@ -44,6 +43,33 @@ export default function AuditPage({ params }: PageProps) {
         aiSummary: data.ai_summary || "",
         createdAt: data.created_at,
       });
+
+      if (!data.ai_summary){
+        try {
+          const summmaryRes = await fetch('/api/summary', {
+            method : 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              auditId: data.id,
+              auditData: {
+                formData: data.form_data,
+                recommendations: data.recommendations,
+                totalMonthlySavings: data.total_monthly_savings,
+                totalAnnualSavings: data.total_annual_savings,
+              }
+            })
+          })
+
+          const summaryData = await summmaryRes.json()
+
+          if (summaryData.summary) {
+            setAudit(prev => prev ? { ...prev, aiSummary: summaryData.summary } : prev)
+          }
+
+        } catch(err){
+          console.error('Summary generation failed: ',err)
+        }
+      }
       setLoading(false);
     }
 

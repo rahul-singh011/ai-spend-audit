@@ -21,3 +21,4 @@
 **What I learned:** How Next.js API routes work, how Supabase RLS policies work, how to debug database errors by reading error codes, difference between database schema errors and code errors  
 **Blockers / what I'm stuck on:** Results page not built yet — getting 404 on /audit/[id]  
 **Plan for tomorrow:** Build results page, add Anthropic AI summary, start lead capture modal
+
