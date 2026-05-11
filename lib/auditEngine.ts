@@ -112,7 +112,7 @@ function auditSingleTool(
     const betterPlan = proAlternatives[tool.toolName]
     const betterPlanPrice = betterPlan ? toolPricing[betterPlan] : null
 
-    if (betterPlan && betterPlanPrice !== undefined) {
+    if (betterPlan && betterPlanPrice !== undefined && betterPlanPrice !== null) {
       const projectedSpend = betterPlanPrice * tool.seats
       const savings = tool.monthlySpend - projectedSpend
 
