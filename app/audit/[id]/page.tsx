@@ -1,32 +1,34 @@
-'use client'
+"use client";
 
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { AuditResult, ToolRecommendation } from "@/types";
 
-import { use } from 'react'
+import { use } from "react";
 import { POST } from "@/app/api/audit/route";
+import LeadCaptureModal from "@/components/results/LeadCaptureModal";
 
 interface PageProps {
-  params: Promise<{ id: string }>
+  params: Promise<{ id: string }>;
 }
 
 export default function AuditPage({ params }: PageProps) {
-  const { id } = use(params)
+  const { id } = use(params);
 
-  const [audit, setAudit] = useState<AuditResult | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState('')
-  
-  console.log('component rendered, id:', id)
-  console.log('loading state:', loading)
+  const [audit, setAudit] = useState<AuditResult | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [showModal, setShowModal] = useState(false);
+
+  console.log("component rendered, id:", id);
+  console.log("loading state:", loading);
   useEffect(() => {
     async function fetchAudit() {
       const { data, error } = await supabase
-        .from('audits')
-        .select('*')
-        .eq('id', id)
-        .single()
+        .from("audits")
+        .select("*")
+        .eq("id", id)
+        .single();
 
       if (error || !data) {
         setError("Audit not found");
@@ -44,11 +46,11 @@ export default function AuditPage({ params }: PageProps) {
         createdAt: data.created_at,
       });
 
-      if (!data.ai_summary){
+      if (!data.ai_summary) {
         try {
-          const summmaryRes = await fetch('/api/summary', {
-            method : 'POST',
-            headers: { 'Content-Type': 'application/json' },
+          const summmaryRes = await fetch("/api/summary", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
               auditId: data.id,
               auditData: {
@@ -56,18 +58,19 @@ export default function AuditPage({ params }: PageProps) {
                 recommendations: data.recommendations,
                 totalMonthlySavings: data.total_monthly_savings,
                 totalAnnualSavings: data.total_annual_savings,
-              }
-            })
-          })
+              },
+            }),
+          });
 
-          const summaryData = await summmaryRes.json()
+          const summaryData = await summmaryRes.json();
 
           if (summaryData.summary) {
-            setAudit(prev => prev ? { ...prev, aiSummary: summaryData.summary } : prev)
+            setAudit((prev) =>
+              prev ? { ...prev, aiSummary: summaryData.summary } : prev,
+            );
           }
-
-        } catch(err){
-          console.error('Summary generation failed: ',err)
+        } catch (err) {
+          console.error("Summary generation failed: ", err);
         }
       }
       setLoading(false);
@@ -177,17 +180,31 @@ export default function AuditPage({ params }: PageProps) {
           </div>
         )}
 
-        <div className="text-center">
+        <div className="text-center flex flex-col sm:flex-row gap-3 justify-center">
+          <button
+            onClick={() => setShowModal(true)}
+            className="bg-green-500 hover:bg-green-400 text-black font-bold px-6 py-3 rounded-lg transition"
+          >
+            📧 Email me this report
+          </button>
           <button
             onClick={() => {
               navigator.clipboard.writeText(window.location.href);
               alert("Link copied to clipboard!");
             }}
-            className="bg-white/10 hover:bg-white/20 border boder-white/20 text-white px-6 py-3 rounded-lg transition"
+            className="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-6 py-3 rounded-lg transition"
           >
             📋 Copy Shareable Link
           </button>
         </div>
+
+        {showModal && (
+          <LeadCaptureModal
+            auditId={audit.id}
+            totalMonthlySavings={audit.totalMonthlySavings}
+            onClose={() => setShowModal(false)}
+          />
+        )}
 
         {isLowSavings && (
           <div className="mt-8 bg-white/5 border border-white/10 rounded-xl p-6 text-center">
@@ -263,9 +280,7 @@ function RecommendationCard({ rec }: { rec: ToolRecommendation }) {
         </p>
       )}
 
-      
       <p className="text-gray-400 text-sm">{rec.reason}</p>
-
     </div>
   );
 }
