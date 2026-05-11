@@ -21,7 +21,7 @@ export async function POST(request: NextRequest){
         .from('audits')
         .insert({
             form_data : formData,
-            recommandations : auditResult.recommandations,
+            recommendations : auditResult.recommendations,
             total_monthly_savings : auditResult.totalMonthlySavings,
             total_annual_savings : auditResult.totalAnnualSavings,
             ai_summary: '',
