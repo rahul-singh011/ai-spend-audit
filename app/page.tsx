@@ -45,7 +45,7 @@ export default function Home(){
         size="lg"
         className = "bg-green-500 hover:bg-green-400 text-black font-bold px-8 py-6 text-lg "
       > 
-      Audit My AI  Spend — It's Free
+      Audit My AI  Spend — It&apos;s Free
       </Button>
 
       <p className="text-gray-500 text-sm mt-4">

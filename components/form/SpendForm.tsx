@@ -39,17 +39,20 @@ const DEFAULT_FORM : FormData = {
 }
 
 export default function SpendForm() {
-  const [formData , setFormData] = useState<FormData>(DEFAULT_FORM)
-  const [isLoading , setIsLoading] = useState(false)
-
-  useEffect(() =>{
-    const saved = localStorage.getItem('spenlens-form')
-    if (saved){
-      setFormData(JSON.parse(saved))
+  
+  const [formData, setFormData] = useState<FormData>(() => {
+    if (typeof window === 'undefined') return DEFAULT_FORM
+    try {
+      const saved = localStorage.getItem('spendlens-form')
+      return saved ? JSON.parse(saved) : DEFAULT_FORM
+    } catch {
+      return DEFAULT_FORM
     }
-  },[])
-
-  useEffect(()=>{
+  })
+  const [isLoading, setIsLoading] = useState(false)
+  
+  
+  useEffect(() => {
     localStorage.setItem('spendlens-form', JSON.stringify(formData))
   }, [formData])
 
@@ -126,7 +129,7 @@ export default function SpendForm() {
         Audit Your AI Spend
       </h2>
       <p className="text-gray-400 mb-8">
-        Add the AI tools your team pays for and we'll find where you can save.
+        Add the AI tools your team pays for and we will find where you can save.
       </p>
 
      

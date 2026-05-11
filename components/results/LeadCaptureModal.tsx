@@ -50,7 +50,7 @@ export default function LeadCaptureModal({
 
       if (!response.ok) throw new Error("Failed to save");
       setIsDone(true);
-    } catch (err) {
+    } catch {
       setError("Something went wrong. Please try again.");
     } finally {
       setIsLoading(false);
@@ -68,7 +68,7 @@ export default function LeadCaptureModal({
             <p className="text-gray-400 text-sm mb-6">
               Check your inbox for your audit summary.
               {totalMonthlySavings > 500 && (
-                <span className="text-green-400">
+              <span className="text-green-400">
                   {" "}
                   Our team will reach out about your savings opportunity.
                 </span>

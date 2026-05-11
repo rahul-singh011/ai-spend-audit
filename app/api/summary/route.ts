@@ -22,7 +22,13 @@ export async function POST(request: NextRequest) {
 Tool breakdown:
 ${auditData.recommendations
   .map(
-    (rec: any) =>
+    (rec: {
+      toolName: string
+      currentSpend: number
+      recommendedAction: string
+      monthlySavings: number
+      reason: string
+    }) =>
       `- ${rec.toolName}: paying $${rec.currentSpend}/mo, recommended action: ${rec.recommendedAction}, saves $${rec.monthlySavings}/mo. Reason: ${rec.reason}`,
   )
   .join("\n")}

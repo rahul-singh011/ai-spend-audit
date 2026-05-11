@@ -1,11 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from 'next/link'
 import { supabase } from "@/lib/supabase";
 import { AuditResult, ToolRecommendation } from "@/types";
-
 import { use } from "react";
-import { POST } from "@/app/api/audit/route";
 import LeadCaptureModal from "@/components/results/LeadCaptureModal";
 
 interface PageProps {
@@ -106,12 +105,12 @@ export default function AuditPage({ params }: PageProps) {
     <div className="min-h-screen bg-[#0a0a0a] text-white">
       <nav className="flex items-center justify-between px-6 py-4 border-b border-white/10 max-w-6xl mx-auto">
         <span className="text-xl font-bold">SpendLens</span>
-        <a
+        <Link
           href="/"
           className="text-sm text-gray-400 hover:text-white transition"
         >
           ← New Audit
-        </a>
+        </Link>
       </nav>
 
       <div className="max-w-4xl mx-auto px-6 py-12">
@@ -127,7 +126,7 @@ export default function AuditPage({ params }: PageProps) {
                 <span className="text-3xl text-gray-400">/mo</span>
               </h1>
               <p className="text-gray-400 text-xl">
-                potential savings — that's{" "}
+                potential savings — that&apos;s{" "}
                 <span className="text-green-400 font-bold">
                   ${audit.totalAnnualSavings.toFixed(0)}/year
                 </span>
@@ -136,7 +135,7 @@ export default function AuditPage({ params }: PageProps) {
           ) : (
             <>
               <h1 className="text-5xl font-bold text-white mb-2">
-                You are spending well ✓
+                 You&apos;re spending well ✓
               </h1>
               <p className="text-gray-400 text-xl">
                 Your current AI tool stack look optimized.
@@ -212,7 +211,7 @@ export default function AuditPage({ params }: PageProps) {
               Your stack looks optimized right now 👍
             </p>
             <p className="text-gray-400 text-sm">
-              AI tool pricing changes frequently. We'll notify you when new
+              AI tool pricing changes frequently. We&apos;ll notify you when new
               savings apply to your stack.
             </p>
           </div>

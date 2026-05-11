@@ -2,7 +2,6 @@ import { NextRequest , NextResponse } from "next/server";
 import { runAudit } from "@/lib/auditEngine";
 import {AuditFormData} from '@/types'
 import { supabase } from "@/lib/supabase";
-import { error } from "console";
 
 
 export async function POST(request: NextRequest){
@@ -18,7 +17,7 @@ export async function POST(request: NextRequest){
 
         const auditResult = runAudit(formData)
         
-        const {data, error} = await supabase
+        const { data } = await supabase
         .from('audits')
         .insert({
             form_data : formData,
