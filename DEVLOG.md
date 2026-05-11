@@ -29,3 +29,11 @@
 **What I learned:** How to handle API failures gracefully with fallback, how to debug model deprecation errors, how Next.js 16 changed params to a Promise
 **Blockers / what I'm stuck on:** Need to add lead capture and email sending next 
 **Plan for tomorrow:** Lead capture modal, Resend email, shareable URL OG tags, CI workflow, deploy to Vercel
+
+## Day 5 — 2026-05-11
+
+**Hours worked:** 7  
+**What I did:** Build Lead capture modal, Resend email, shareable URL OG tags and Fixed all lint errors, set up GitHub Actions CI, deployed to Vercel. Debugged 6+ build errors including missing types folder, typo in recommendations, null check in audit engine. Site is now live at https://ai-spend-audit-nno9.vercel.app.
+**What I learned:** How Vercel auto-deploys from GitHub, how TypeScript is stricter in production builds than development, how to fix CI workflow for pnpm
+**Blockers / what I'm stuck on:** User interviews pending — waiting for friends to reply
+**Plan for tomorrow:** Complete all markdown docs, README screenshots
