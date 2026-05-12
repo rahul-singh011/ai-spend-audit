@@ -47,10 +47,16 @@ export default function SpendForm() {
     }
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
 
   useEffect(() => {
     localStorage.setItem("spendlens-form", JSON.stringify(formData));
   }, [formData]);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   function addTool(toolName: string) {
     const newTool: ToolEntry = {
@@ -115,6 +121,19 @@ export default function SpendForm() {
     }
   }
 
+  if (!isMounted) {
+    return (
+      <div className="max-w-3xl mx-auto px-6 py-12">
+        <h2 className="text-3xl font-bold text-white mb-2">
+          Audit Your AI Spend
+        </h2>
+        <p className="text-gray-400 mb-8">
+          Add the AI tools your team pays for and we will find where you can save.
+        </p>
+      </div>
+    )
+  }
+  
   return (
     <div className="max-w-3xl mx-auto px-6 py-12">
       <h2 className="text-3xl font-bold text-white mb-2">
