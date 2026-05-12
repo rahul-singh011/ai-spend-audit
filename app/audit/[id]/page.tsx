@@ -113,7 +113,7 @@ export default function AuditPage({ params }: PageProps) {
         </Link>
       </nav>
 
-      <div className="max-w-4xl mx-auto px-6 py-12">
+      <main className="max-w-4xl mx-auto px-6 py-12">
         <div className="text-center mb-12">
           <p className="text-gray-400 uppercase tracking-widest text-sm mb-3">
             Your AI Spend Audit
@@ -216,7 +216,7 @@ export default function AuditPage({ params }: PageProps) {
             </p>
           </div>
         )}
-      </div>
+      </main>
     </div>
   );
 }
@@ -251,20 +251,20 @@ function RecommendationCard({ rec }: { rec: ToolRecommendation }) {
 
       <div className="flex items-center gap-4 mb-3 text-sm">
         <div>
-          <p className="text-gray-500">Current</p>
+          <p className="text-gray-400">Current</p>
           <p className="text-white font-semibold">${rec.currentSpend}/mo</p>
         </div>
         {rec.monthlySavings > 0 && (
           <>
             <div className="text-gray-600">→</div>
             <div>
-              <p className="text-gray-500">Recommended</p>
+              <p className="text-gray-400">Recommended</p>
               <p className="text-green-400 font-semibold">
                 ${rec.projectedSpend}/mo
               </p>
             </div>
             <div>
-              <p className="text-gray-500">Savings</p>
+              <p className="text-gray-400">Savings</p>
               <p className="text-green-400 font-bold">
                 ${rec.monthlySavings}/mo · ${rec.annualSavings}/yr
               </p>

@@ -48,13 +48,13 @@ export default function Home(){
       Audit My AI  Spend — It&apos;s Free
       </Button>
 
-      <p className="text-gray-500 text-sm mt-4">
+      <p className="text-gray-400 text-sm mt-4">
           No login required. Results in 30 seconds.
         </p>
     </section>
 
     <section className = "border-t border-white/10 px-8 py-6">
-        <p className="text-center text-gray-500 text-sm mb-6">
+        <p className="text-center text-gray-400 text-sm mb-6">
           Audits spending on
         </p>
         

@@ -161,7 +161,7 @@ export default function LeadCaptureModal({
 
               <button
                 onClick={onClose}
-                className="text-gray-500 text-sm hover:text-gray-400 text-center"
+                className="text-gray-400 text-sm hover:text-gray-400 text-center"
               >
                 No thanks, I will just view it here
               </button>
