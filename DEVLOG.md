@@ -37,3 +37,11 @@
 **What I learned:** How Vercel auto-deploys from GitHub, how TypeScript is stricter in production builds than development, how to fix CI workflow for pnpm
 **Blockers / what I'm stuck on:** User interviews pending — waiting for friends to reply
 **Plan for tomorrow:** Complete all markdown docs, README screenshots
+
+## Day 6 — 2026-05-12
+
+**Hours worked:** 7  
+**What I did:** Completed all markdown documentation — GTM, ECONOMICS, REFLECTION, METRICS, LANDING_COPY, ARCHITECTURE, README, USER_INTERVIEWS. Fixed hydration error caused by localStorage mismatch between server and client render — solved with isMounted pattern. Improved Lighthouse accessibility from 81 to 98 by fixing form labels and contrast. Added smooth scroll on CTA buttons. Optimized Next.js config for better performance. Took screenshots for README. Final review of all files before submission.  
+**What I learned:** Hydration errors happen when server-rendered HTML doesn't match client — localStorage data causes this because server doesn't have access to it. The isMounted pattern solves this cleanly. Also learned that Lighthouse scores vary on localhost — always test on the live deployed URL.  
+**Blockers / what I'm stuck on:** Nothing — all MVP features working, all docs complete, CI green, deployed on Vercel.  
+**Plan for tomorrow:** Submit the Google Form with GitHub repo URL and live Vercel URL.
