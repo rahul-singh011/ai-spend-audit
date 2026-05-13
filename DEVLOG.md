@@ -45,3 +45,19 @@
 **What I learned:** Hydration errors happen when server-rendered HTML doesn't match client — localStorage data causes this because server doesn't have access to it. The isMounted pattern solves this cleanly. Also learned that Lighthouse scores vary on localhost — always test on the live deployed URL.  
 **Blockers / what I'm stuck on:** Nothing — all MVP features working, all docs complete, CI green, deployed on Vercel.  
 **Plan for tomorrow:** Submit the Google Form with GitHub repo URL and live Vercel URL.
+
+## Day 7 — 2025-05-13
+
+**Hours worked:** 2  
+**What I did:** Final submission day. Fixed lint error in SpendForm — 
+removed isMounted pattern and replaced with suppressHydrationWarning. 
+Ran all 5 tests — all passing. Ran lint — no errors. Tested full user 
+flow on live Vercel URL: form → audit → results → email capture → 
+shareable link. All working. Reviewed all 12 markdown files. 
+Submitted Google Form with GitHub repo and live URL.  
+**What I learned:** Shipping a complete product in 7 days is very 
+different from tutorials. The hardest parts were not the code — 
+they were decisions, documentation, and talking to real users. 
+I underestimated how long markdown docs would take.  
+**Blockers / what I'm stuck on:** None — submission complete.  
+**Plan for tomorrow:** Wait for Round 2 results within 3 working days.
