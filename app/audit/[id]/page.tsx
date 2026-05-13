@@ -6,6 +6,8 @@ import { supabase } from "@/lib/supabase";
 import { AuditResult, ToolRecommendation } from "@/types";
 import { use } from "react";
 import LeadCaptureModal from "@/components/results/LeadCaptureModal";
+import { toast } from 'sonner'
+
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -188,8 +190,10 @@ export default function AuditPage({ params }: PageProps) {
           </button>
           <button
             onClick={() => {
-              navigator.clipboard.writeText(window.location.href);
-              alert("Link copied to clipboard!");
+              navigator.clipboard.writeText(window.location.href)
+              toast.success('Link copied to clipboard!', {
+                description: 'Share this URL to show your audit results',
+              })
             }}
             className="bg-white/10 hover:bg-white/20 border border-white/20 text-white px-6 py-3 rounded-lg transition"
           >
