@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ message: 'No audits to check', changes: [] })
         }
 
-        const changeAudits = []
+        const changedAudits = []
 
         for(const audit of audits){
             const snapshot = audit.pricing_snapshot as Record<string, Record<string, number>>
@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
                 if(!storedToolPricing || !currentToolPricing) continue
 
                 const storedPrice = storedToolPricing[tool.plan]
-                const currentPrice = storedToolPricing[tool.plan]
+                const currentPrice = currentToolPricing[tool.plan]
 
                 if (
                     storedPrice !== undefined &&
@@ -88,6 +88,7 @@ export async function POST(request: NextRequest) {
     
     } catch (err){
         console.error('Detect changes error: ', err)
+        console.error('Detect changes error:', err)
         return NextResponse.json({error : 'Internal server error'} , {status : 500})
     }
 

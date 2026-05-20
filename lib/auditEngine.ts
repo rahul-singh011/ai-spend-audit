@@ -5,7 +5,7 @@ export const OFFICIAL_PRICING: Record<string ,Record<string, number>> = {
 
     cursor:{
         hobby:0,
-        pro: 20,
+        pro: 25,
         'pro+': 60,
         ultra: 200,
         teams: 40,
