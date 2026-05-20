@@ -13,3 +13,34 @@ Plan:
 
 Biggest risk: diff view UI and email sending in 36 hours.
 Cutting if needed: bonus features (unsubscribe, admin dashboard).
+
+
+## 2026-05-20 15:00 — Database setup
+Added pricing_snapshot and user_email columns to audits table.
+Created pricing_change_logs table in Supabase.
+
+## 2026-05-20 16:00 — Pricing snapshot working
+Updated /api/audit to save pricing snapshot at audit time.
+Added email field to the form. Verified in Supabase — both
+columns saving correctly.
+
+## 2026-05-20 17:30 — Detect changes endpoint
+Built /api/detect-changes. Hit a bug — was comparing
+storedToolPricing to itself instead of currentToolPricing.
+Classic copy-paste bug. Fixed by reading carefully.
+
+## 2026-05-20 19:00 — Detection working
+Tested with simulated price change (cursor pro 20→22).
+Found 2 stale audits correctly.
+
+## 2026-05-20 20:00 — Email notifications
+Added Resend email sending to detect-changes endpoint.
+Email code runs correctly — pricing_change_logs shows
+email_sent: true. Resend free tier limits delivery to
+verified addresses only — documented this limitation.
+
+## 2026-05-20 23:22 — Diff view page
+Building /audit/[id]/diff page now.
+Deadline: tomorrow 10pm. On track.
+Plan for tomorrow: finish diff view, GitHub Actions schedule,
+ROUND2_PR.md, ROUND2_REFLECTION.md, deploy.
