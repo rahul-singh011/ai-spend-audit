@@ -8,7 +8,7 @@ export const OFFICIAL_PRICING: Record<string ,Record<string, number>> = {
         pro: 20,
         'pro+': 60,
         ultra: 200,
-        teams: 40,
+        teams: 45,
         enterprise: 40,
     },
 
