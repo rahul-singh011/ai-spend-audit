@@ -1,7 +1,7 @@
 
 import { AuditFormData , AuditResult , ToolRecommendation} from '@/types'
 
-const OFFFICIAL_PRICING: Record<string ,Record<string, number>> = {
+export const OFFICIAL_PRICING: Record<string ,Record<string, number>> = {
 
     cursor:{
         hobby:0,
@@ -76,7 +76,7 @@ function auditSingleTool(
     useCase: string
 ): ToolRecommendation {
 
-    const toolPricing = OFFFICIAL_PRICING[tool.toolName]
+    const toolPricing = OFFICIAL_PRICING[tool.toolName]
     const currentPricePerSeat = toolPricing?.[tool.plan] ?? 0
     const officialMonthlyTotal = currentPricePerSeat * tool.seats
        

@@ -1,0 +1,15 @@
+name : Detect Pricing Changes
+
+on : 
+  schedule: 
+      -cron:'0 9 * * *'
+  workflow_dispatch:
+
+jobs:
+  detect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger detect-changes endpoint
+        run: |
+          curl -X POST ${{ secrets.APP_URL }}/api/detect-changes \
+            -H "Content-Type: application/json"

@@ -16,6 +16,7 @@ interface FormData {
   tools: ToolEntry[];
   teamSize: number;
   useCase: string;
+  email : string
 }
 
 const ALL_TOOLS = [
@@ -34,6 +35,7 @@ const DEFAULT_FORM: FormData = {
   tools: [],
   teamSize: 1,
   useCase: "coding",
+  email: '',
 };
 
 export default function SpendForm() {
@@ -41,7 +43,11 @@ export default function SpendForm() {
     if (typeof window === "undefined") return DEFAULT_FORM;
     try {
       const saved = localStorage.getItem("spendlens-form");
-      return saved ? JSON.parse(saved) : DEFAULT_FORM;
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        return { ...DEFAULT_FORM, ...parsed, email: parsed.email || '' };
+      }
+      return DEFAULT_FORM;
     } catch {
       return DEFAULT_FORM;
     }
@@ -93,14 +99,17 @@ export default function SpendForm() {
     if (formData.tools.length === 0) {
       alert("Please add at least one tool");
       return;
-    }
+    } 
     setIsLoading(true);
 
     try {
       const response = await fetch("/api/audit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          formData,
+          email: formData.email || null
+        }),
       });
 
       const result = await response.json();
@@ -175,6 +184,23 @@ export default function SpendForm() {
               ))}
             </select>
           </div>
+        </div>
+
+        <div className="mt-4">
+          <label
+              htmlFor="email"
+              className="text-gray-500 text-sm mb-1 block">
+                Email <span className="text-gray-500">( optional - get notified when prices change)</span>
+          </label>
+          <input
+            id="email"
+            type="email"
+            value={formData.email}
+            onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+            placeholder="you@company.com"
+            className="w-full bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-white text-sm"
+          />
+
         </div>
       </div>
 

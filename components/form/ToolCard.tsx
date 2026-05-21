@@ -41,7 +41,7 @@ export default function ToolCard({
   onRemove,
 }: ToolcardProps) {
   return (
-    <div className="bg-white/5 border border-white/10 rounded-xl p-5 relative">
+    <div className="bg-white/5 border border-white/10 rounded-xl p-5 relative" suppressHydrationWarning>
       <button
         onClick={() => onRemove(toolEntry.id)}
         className="absolute top-3 right-3 text-gray-400 hover:text-red-400 text-xl"
