@@ -44,3 +44,20 @@ Building /audit/[id]/diff page now.
 Deadline: tomorrow 10pm. On track.
 Plan for tomorrow: finish diff view, GitHub Actions schedule,
 ROUND2_PR.md, ROUND2_REFLECTION.md, deploy.
+
+## 2026-05-21 09:00 — Day 2 start
+
+All 4 features working. Today: deploy, docs, submit.
+
+## 2026-05-21 10:00 — Deployed to preview URL
+
+Preview URL working:
+https://ai-spend-audit-nno9-git-round-2-6d179f-rahul-singh011s-projects.vercel.app
+Disabled Vercel deployment protection for preview URLs.
+Tested detect-changes on live URL — working correctly.
+
+## 2026-05-21 12:00 — Docs complete
+
+ROUND2_PR.md, ROUND2_REFLECTION.md written.
+Reverting cursor pro price to $20 after testing.
+
